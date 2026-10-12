@@ -1,4 +1,5 @@
-extern ascii_to_int	; Pull in the function from type_converter.asm
+extern ascii_to_int	; Pull in the functions from type_converter.asm
+extern int_to_ascii
 
 section .date
 	input_str db "456", 0Ah		; Test string
@@ -12,7 +13,14 @@ _start:
 	mov rsi, input_str
 	call ascii_to_int	; Returns result in RAX
 
-	; Exit with converted integer
-	mov rdi, rax		; Move converted integer
+	call int_to_ascii	; Convert integer to string
+
+	; Print the result
+	mov rax, 1		; System call 1 = sys_write
+	mov rdi, 1		; File descriptor 1 = stdout
+	syscall			; Pointer and length shoud be set in the function
+
+	; Exit
+	xor rdi, rdi		; Return code 0
 	mov rax, 60		; sys_exit
 	syscall
