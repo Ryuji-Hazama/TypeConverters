@@ -4,7 +4,7 @@ DEFAULT REL
 	; Test script for int<->string conversion ;
 	; - - - - - - - - - - - - - - - - - - - - ;
 
-extern ascii_to_int	; Pull in the functions from type_converter.asm
+extern ascii_to_int	; Pull functions
 extern int_to_ascii
 extern std_in
 extern std_out
