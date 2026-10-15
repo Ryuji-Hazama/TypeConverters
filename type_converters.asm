@@ -1,8 +1,18 @@
 section .text
+
+	; - - - ; Declare Global Function ; - - - ;
+
 	global ascii_to_int	; Make these functions visible
 	global int_to_ascii
 
+	; - - - ; Integer <-> String ; - - - ;
+
 ascii_to_int:
+	; - - - - - - - - - - - - - - ;
+	; Convert string specified by ;
+	; the RSI pointer to integer  ;
+	; - - - - - - - - - - - - - - ;
+
 	xor rax, rax	; Clear accumulator
 	xor rcx, rcx	; Clear RCX to use as a temporary byte holder
 
@@ -24,6 +34,12 @@ ascii_to_int:
 	ret			; Return to caller
 
 int_to_ascii:
+	; - - - - - - - - - - - - - - - - - - ;
+	; Convert integer in RAX to string.   ;
+	; Store string pointer into RSI and   ;
+	; store result string length into RDX ;
+	; - - - - - - - - - - - - - - - - - - ;
+
 section .bss
 	buffer resb 21		; Reserve 21 bytes
 
