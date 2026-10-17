@@ -14,9 +14,9 @@ section .bss
 	calc_result resd 1	; Reserve 1 doubleword (4 bytes) for result
 
 section .date
-	input_msg db "Input your number: ", 0		; Input message
+	input_msg db "Input your number: ", 0x0		; Input message
 	input_msg_len equ $ - input_msg
-	output_msg db "Doubled your number is: ", 0	; Output message
+	output_msg db "Doubled your number is: ", 0x0	; Output message
 	output_msg_len equ $ - output_msg
 
 section .text
